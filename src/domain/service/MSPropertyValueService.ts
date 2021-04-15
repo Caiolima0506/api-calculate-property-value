@@ -1,5 +1,5 @@
 
-import * as https from 'http';
+import * as http from 'http';
 import { JsonConfig } from '../../config/json.config';
 import { QuerySquareMeters } from '../helpers/QuerySquareMeters';
 import { QuerySquareMetersResult } from '../helpers/QuerySquareMetersResult';
@@ -39,7 +39,7 @@ export  class MSPropertyValueService  {
 
         return new Promise<QuerySquareMetersResult>((resolve, reject)=>{
 
-            https.request(`${Url}/PropertyValue/SquareMeters?cep=${cep}`, (res: https.IncomingMessage): void => {
+            http.request(`${Url}/PropertyValue/SquareMeters?cep=${cep}`, (res: http.IncomingMessage): void => {
                 res.setEncoding('utf8');
                 let data = '';
                 res.on('data', d => data += d);
