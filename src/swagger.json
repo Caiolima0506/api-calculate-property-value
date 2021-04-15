@@ -11,12 +11,12 @@
         }
     },
     "paths": {
-        "/PropertyValue/SquareMeters": {
+        "/CalculatePropertyValue": {
             "get": {
                 "tags": [
-                    "Valor do Metro Quadrado"
+                    "Valor de um imóvel"
                 ],
-                "summary": "Retorna o valor do metro quadrado através do CEP.",
+                "summary": "Retorna o valor do imóvel através do CEP e quantidade de metros quadrados.",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -30,26 +30,33 @@
                     "required": true,
                     "description": "Referente ao local do imóvel",
                     "type": "string"
+                },
+                {
+                    "name": "squareMeters",
+                    "in": "query",
+                    "required": true,
+                    "description": "Referente a quantidade de metros quadrados",
+                    "type": "string"
                 }
             ],
             "responses": {
                 "200": {
                     "description": "OK",
                     "schema": {
-                        "$ref": "#/definitions/ValueMeter"
+                        "$ref": "#/definitions/ValueProperty"
                     }
                 }
             }
         }
     },  
     "definitions": {
-        "ValueMeter": {
+        "ValueProperty": {
             "type": "object",
             "properties": {
                 "Cep": {
                     "type": "string"
                 },
-                "Value": {
+                "PropertyValue": {
                     "type": "decimal"
                 }
             }
