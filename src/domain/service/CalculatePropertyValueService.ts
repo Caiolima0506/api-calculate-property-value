@@ -8,6 +8,13 @@ const _mSPropertyValueService = new MSPropertyValueService();
 
 export  class CalculatePropertyValueService  {
     
+
+    /**
+     * Calcula o valor do imóvel de acordo com a quantidade de metros quadrados
+     * @param cep number
+     * @param squareMeters number
+     * @returns {Promise<ResCalculateValueController>}
+     */
     public async CalculatePropertyValue(cep:number, squareMeters: number) { 
 
         await this.Validate(squareMeters);
@@ -37,7 +44,11 @@ export  class CalculatePropertyValueService  {
         
     }
 
-    private async Validate(squareMeters){
+    /**
+     * Retorna Exeption caso a quandidade de metros quadrados for maior que 10000 ou menor que 10
+     * @param squareMeters 
+     */
+    public async Validate(squareMeters){
 
         if(squareMeters < 10 ){
 
@@ -49,11 +60,18 @@ export  class CalculatePropertyValueService  {
 
             throw new ClaculatePropertyValueExeption("A quantidade de metros quadrados não pode ser maior que 10.000!");
         }
-  
+        
+        return;
 
     }
 
-    private async Calculate(squareMeters: number, valueSquareMeter:number){
+    /**
+     * Multiplica o valor do metro quadrado pela quantidade de metros quadrados do imóvel
+     * @param squareMeters 
+     * @param valueSquareMeter 
+     * @returns {number}
+     */
+    public async Calculate(squareMeters: number, valueSquareMeter:number){
 
         return  (squareMeters * valueSquareMeter);
 

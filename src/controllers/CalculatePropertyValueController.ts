@@ -9,6 +9,7 @@ const calculatePropertyValueService = new CalculatePropertyValueService();
 
 router.get('/', query('cep').isNumeric(), query('squareMeters').isNumeric(), async (req: Request, res: Response) => {
 
+    //valida entrada de dados
     const schemaErrors = validationResult(req);
 
     if (!schemaErrors.isEmpty()) {
@@ -31,7 +32,6 @@ router.get('/', query('cep').isNumeric(), query('squareMeters').isNumeric(), asy
         }else{
 
             return res.status(500);
-
         }
 
     });

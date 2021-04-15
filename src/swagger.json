@@ -4,7 +4,7 @@
     "info": {
         "version": "1.0.0",
         "title": "api-cauculate-property-value",
-        "description": "API que retorna os valor total do imóvel pela quantidade do metro quadrado de acordo com o CEP.",
+        "description": "API que retorna o valor total do imóvel pela quantidade de metros quadrados de acordo com o CEP.",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"

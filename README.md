@@ -1,6 +1,7 @@
 # REST API 
 
-
+API Online
+    https://api-calculate-property-value.herokuapp.com/
 
 # Processos para inicialização 
 
@@ -16,10 +17,13 @@
 
     npm start
 
-## Executar Api Dev
+## Executar API Dev
 
     npm run dev
 
+## Executar API Docker / Nodemon
+
+    docker-compose up --build
 
 ## Documentação API - Swagger
 
@@ -31,7 +35,7 @@
     http://localhost:3002/swagger
 
 
-## Get Calcula o valor do Imóvel pela quantidade de metros quadrados
+## Get calcula o valor do imóvel pela quantidade de metros quadrados
 
 Param : cep : string
 Param : squareMeters : string
