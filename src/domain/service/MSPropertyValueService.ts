@@ -34,6 +34,7 @@ export  class MSPropertyValueService  {
     }
 
     private async GetValueSquareMeters(cep:Number){
+      
         const Url = (await jsonConfig.mSPropertyValueConfig()).Url;
 
         return new Promise<QuerySquareMetersResult>((resolve, reject)=>{
