@@ -28,12 +28,28 @@ const bodyParser = __importStar(require("body-parser"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swaggerDocument = __importStar(require("../src/swagger.json"));
 const CalculatePropertyValueController_1 = require("./controllers/CalculatePropertyValueController");
+const cors_1 = __importDefault(require("cors"));
 var ExitStatus;
 (function (ExitStatus) {
     ExitStatus[ExitStatus["Failure"] = 1] = "Failure";
     ExitStatus[ExitStatus["Success"] = 0] = "Success";
 })(ExitStatus || (ExitStatus = {}));
 const app = express_1.default();
+const options = {
+    allowedHeaders: [
+        'Origin',
+        'X-Requested-With',
+        'Content-Type',
+        'Accept',
+        'X-Access-Token',
+    ],
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: '*',
+    preflightContinue: false,
+};
+app.use(cors_1.default(options));
+app.options('*', cors_1.default(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /**
