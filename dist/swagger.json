@@ -1,0 +1,57 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "api-cauculate-property-value",
+        "description": "API que retorna os valor total do imóvel pela quantidade do metro quadrado de acordo com o CEP.",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "paths": {
+        "/PropertyValue/SquareMeters": {
+            "get": {
+                "tags": [
+                    "Valor do Metro Quadrado"
+                ],
+                "summary": "Retorna o valor do metro quadrado através do CEP.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "cep",
+                    "in": "query",
+                    "required": true,
+                    "description": "Referente ao local do imóvel",
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/ValueMeter"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ValueMeter": {
+            "type": "object",
+            "properties": {
+                "Cep": {
+                    "type": "string"
+                },
+                "Value": {
+                    "type": "decimal"
+                }
+            }
+        }
+    }
+}
