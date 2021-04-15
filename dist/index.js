@@ -35,26 +35,15 @@ var ExitStatus;
     ExitStatus[ExitStatus["Success"] = 0] = "Success";
 })(ExitStatus || (ExitStatus = {}));
 const app = express_1.default();
-const options = {
-    allowedHeaders: [
-        'Origin',
-        'X-Requested-With',
-        'Content-Type',
-        'Accept',
-        'X-Access-Token',
-    ],
-    credentials: true,
-    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: '*',
-    preflightContinue: false,
-};
-app.use(cors_1.default(options));
-app.options('*', cors_1.default(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-/**
- * Rotas para Controllers
- */
+const allowedOrigins = ['https://api-calculate-property-value.herokuapp.com', 'http://localhost:3000'];
+const options = {
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: allowedOrigins,
+};
+app.use(cors_1.default(options));
+app.use(express_1.default.json());
 app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 app.use('/CalculatePropertyValue', CalculatePropertyValueController_1.CalculatePropertyValueController);
 process.on('unhandledRejection', (reason, promise) => {
