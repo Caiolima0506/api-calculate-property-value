@@ -29,7 +29,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MSPropertyValueService = void 0;
-const http = __importStar(require("http"));
+const https = __importStar(require("http"));
 const json_config_1 = require("../../config/json.config");
 const jsonConfig = new json_config_1.JsonConfig();
 class MSPropertyValueService {
@@ -53,7 +53,7 @@ class MSPropertyValueService {
         return __awaiter(this, void 0, void 0, function* () {
             const Url = (yield jsonConfig.mSPropertyValueConfig()).Url;
             return new Promise((resolve, reject) => {
-                http.request(`${Url}/PropertyValue/SquareMeters?cep=${cep}`, (res) => {
+                https.request(`${Url}/PropertyValue/SquareMeters?cep=${cep}`, (res) => {
                     res.setEncoding('utf8');
                     let data = '';
                     res.on('data', d => data += d);
