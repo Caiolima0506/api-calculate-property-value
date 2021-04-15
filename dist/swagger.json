@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "version": "1.0.0",
+        "version": "1.0.23",
         "title": "api-cauculate-property-value",
         "description": "API que retorna os valor total do imóvel pela quantidade do metro quadrado de acordo com o CEP.",
         "license": {

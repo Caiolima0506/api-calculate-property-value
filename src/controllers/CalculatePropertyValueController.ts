@@ -23,7 +23,7 @@ router.get('/', query('cep').isNumeric(), query('squareMeters').isNumeric(), asy
         return res.status(200).send(result);
                 
     }).catch((err)=>{
-
+ 
         if(err && err.status){
 
             return res.status(err.status).send({msg:err.message});

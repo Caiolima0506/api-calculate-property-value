@@ -37,7 +37,7 @@ var ExitStatus;
 const app = express_1.default();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const allowedOrigins = ['https://api-calculate-property-value.herokuapp.com', 'http://localhost:3000'];
+const allowedOrigins = ['https://api-calculate-property-value.herokuapp.com', 'http://localhost:3001'];
 const options = {
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     origin: allowedOrigins,
