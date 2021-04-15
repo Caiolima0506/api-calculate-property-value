@@ -1,5 +1,4 @@
 import ClaculatePropertyValueExeption from "../../exeptions/ClaculatePropertyValueExeption";
-import { ProcessingInternalError } from "../helpers/GlobalErrors";
 import { QuerySquareMeters } from "../helpers/QuerySquareMeters";
 import { QuerySquareMetersResult } from "../helpers/QuerySquareMetersResult";
 import { ResCalculateValueController } from "../helpers/ResCalculateValueController";

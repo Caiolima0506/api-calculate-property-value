@@ -3,6 +3,7 @@ import * as https from 'http';
 import { JsonConfig } from '../../config/json.config';
 import { QuerySquareMeters } from '../helpers/QuerySquareMeters';
 import { QuerySquareMetersResult } from '../helpers/QuerySquareMetersResult';
+import  axios from 'axios';
 
 const jsonConfig = new JsonConfig();
 
@@ -35,45 +36,27 @@ export  class MSPropertyValueService  {
 
     private async GetValueSquareMeters(cep:Number){
       
-        const Url = (await jsonConfig.mSPropertyValueConfig()).Url;
+      const Url = (await jsonConfig.mSPropertyValueConfig()).Url;
 
         return new Promise<QuerySquareMetersResult>((resolve, reject)=>{
+      
+          axios.get<QuerySquareMetersResult>(`${Url}/PropertyValue/SquareMeters?cep=${cep}`).then((response: any)=>{
 
-            https.request(`${Url}/PropertyValue/SquareMeters?cep=${cep}`, (res: https.IncomingMessage): void => {
-                res.setEncoding('utf8');
-                let data = '';
-                res.on('data', d => data += d);
+            let result : QuerySquareMetersResult = {
+                          Cep : response.data['Cep'],
+                          Value : response.data['Value']
+                        }
 
-                res.on('error', error => {
-                  return reject(error)
-                })
-                res.on('end', () => {
-        
-                  data = JSON.parse(data);
-        
-                  if(res.statusCode === 200){
-        
-                    let result : QuerySquareMetersResult = {
-                      Cep : data['Cep'],
-                      Value : data['Value']
-                    }
-        
-                    return resolve(result);
-        
-                  }else{
-
-                    return reject(data)
-
-                  }
-        
-                });
-              }).end()
+            resolve(result);
+            console.info(result)
+    
+          }).catch((error)=>{
+            reject(error)
+    
+          })
 
 
-        })
-
-
-        
+        })   
 
     }
   
